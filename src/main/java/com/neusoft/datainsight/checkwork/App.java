@@ -27,14 +27,14 @@ public class App {
 				System.setProperty(MyTimerTask.RETRY_TIMES, args[2]);
 
 		}
-		System.out.println("Start scheduler for user "+System.getProperty(MyTimerTask.USER, "kuangjq"));
+		System.out.println("Start scheduler for user " + System.getProperty(MyTimerTask.USER, "kuangjq"));
 		JobDetail mJobDetail = JobBuilder.newJob(com.neusoft.datainsight.checkwork.job.MyTimerTask.class).build();
 		JobDetail eJobDetail = JobBuilder.newJob(com.neusoft.datainsight.checkwork.job.MyTimerTask.class).build();
 
 		CronTrigger morning = TriggerBuilder.newTrigger()
 				.withSchedule(CronScheduleBuilder.atHourAndMinuteOnGivenDaysOfWeek(8, 20, 1, 2, 3, 4, 5)).build();
 		CronTrigger evening = TriggerBuilder.newTrigger()
-				.withSchedule(CronScheduleBuilder.atHourAndMinuteOnGivenDaysOfWeek(19, 30, 1, 2, 3, 4, 5)).build();
+				.withSchedule(CronScheduleBuilder.atHourAndMinuteOnGivenDaysOfWeek(19, 15, 1, 2, 3, 4, 5)).build();
 		Scheduler scheduler;
 		try {
 			scheduler = new StdSchedulerFactory().getScheduler();
